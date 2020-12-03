@@ -2,14 +2,16 @@
   "name": "software-testing-assignment",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no tests are implemented yet \" && exit 1"
+    "test": "./node_modules/.bin/mocha test/test.add.js"
   },
   "author": "",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "glob": "^7.1.6"
+  },
   "devDependencies": {
     "chai": "^4.2.0",
     "coveralls": "^3.1.0",
