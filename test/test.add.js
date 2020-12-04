@@ -45,10 +45,10 @@ describe('Test add.js', function() {
       chai.expect(result).to.equal(expectedResult);
     });
 
-    it('Basic happy case 3: should return -1 when given 0 and -1.0 as params.', function() {
-      const firstOperand = -1.0;
-      const secondOperand = 0;
-      const expectedResult = -1;
+    it('Basic happy case 3: should return 0.00000000000000002 when given 0.00000000000000001 as both params.', function() {
+      const firstOperand = 0.00000000000000001;
+      const secondOperand = 0.00000000000000001;
+      const expectedResult = 0.00000000000000002;
 
       const result = add(firstOperand, secondOperand);
       chai.expect(result).to.equal(expectedResult);
@@ -58,7 +58,7 @@ describe('Test add.js', function() {
 
   describe('Most common error cases', function() {
     
-    it('Operand error 1: NaN as the other operand', function() {
+    it('Operand error 1: NaN as the other operand should return NaN', function() {
       const firstOperand = Number.NaN;
       const secondOperand = 10;
 
@@ -66,13 +66,28 @@ describe('Test add.js', function() {
       chai.expect(result).to.be.NaN;
     });
 
-    it('Operand error 1: Adding number 10 to String "5" should return String "510"', function() {
+    it('Operand error 2: Adding number 10 to String "5" should return NaN', function() {
       const firstOperand = "5";
       const secondOperand = 10;
-      const expectedResult = "510";
 
       const result = add(firstOperand, secondOperand);
-      chai.expect(result).to.equal(expectedResult);
+      chai.expect(result).to.be.NaN;
+    });
+
+    it('Operand error 3: Adding number 10 to null (= explicit empty value) should return 10', function() {
+      const firstOperand = 10;
+      const secondOperand = null;
+
+      const result = add(firstOperand, secondOperand);
+      chai.expect(result).to.equal(10);
+    });
+
+    it('Operand error 4: Adding number 10 to undefined should return undefined', function() {
+      const firstOperand = 10;
+      const secondOperand = undefined;
+
+      const result = add(firstOperand, secondOperand);
+      chai.expect(result).to.be.undefined;
     });
   });
 });
