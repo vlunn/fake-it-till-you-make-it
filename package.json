@@ -5,7 +5,8 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "test": "nyc mocha --timeout 10000",
+
+    "test": "nyc mocha test/test.isEmpty.js --timeout 10000",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
   },
   "author": "",
