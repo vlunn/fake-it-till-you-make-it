@@ -74,6 +74,31 @@ describe('Test add.js', function() {
       chai.expect(result).to.equal(expectedResult);
     });
 
+    it('Basic happy case 6: adds to max safe integer', function() {
+      const operand1 = 9007199254740991;
+      const operand2 = 3;
+      const operand3 = 2000;
+      const operand4 = -100;
+
+      const expectedResult1 = 9007199254740994;
+      const expectedResult2 = 9007199254742991;
+      const expectedResult3 = 9007199254740891;
+      const expectedResult4 = 0;
+      const expectedResult5 = -9007199254740991;
+
+      const result1 = add(operand1, operand2);
+      const result2 = add(operand1, operand3);
+      const result3 = add(operand1, operand4);
+      const result4 = add(operand1, -operand1);
+      const result5 = add(operand1, -2*operand1);
+      
+      chai.expect(result1).to.equal(expectedResult1);
+      chai.expect(result2).to.equal(expectedResult2);
+      chai.expect(result3).to.equal(expectedResult3);
+      chai.expect(result4).to.equal(expectedResult4);
+      chai.expect(result5).to.equal(expectedResult5);
+    });
+
   });
 
   describe('Most common error cases', function() {
