@@ -54,12 +54,32 @@ describe('Test add.js', function() {
       chai.expect(result).to.equal(expectedResult);
     });
 
+    it('Basic happy case 4: should return 0 when given +0 and -0.', function() {
+      const firstOperand = 0;
+      const secondOperand = -0;
+      const expectedResult = 0;
+
+      const result = add(firstOperand, secondOperand);
+      chai.expect(result).to.equal(expectedResult);
+    });
+
+    it('Basic happy case 5: adds together three numbers', function() {
+      const firstOperand = 3;
+      const secondOperand = 7;
+      const thirdOperand = 11;
+      const expectedResult = 21;
+
+      const result = add(firstOperand, secondOperand, thirdOperand);
+      
+      chai.expect(result).to.equal(expectedResult);
+    });
+
   });
 
   describe('Most common error cases', function() {
     
     it('Operand error 1: NaN as the other operand should return NaN', function() {
-      const firstOperand = Number.NaN;
+      const firstOperand = NaN;
       const secondOperand = 10;
 
       const result = add(firstOperand, secondOperand);
@@ -88,6 +108,55 @@ describe('Test add.js', function() {
 
       const result = add(firstOperand, secondOperand);
       chai.expect(result).to.be.undefined;
+    });
+
+    it('Operand error 5: Adding undefined to undefined should return undefined', function() {
+      const firstOperand = undefined;
+      const secondOperand = undefined;
+
+      const result = add(firstOperand, secondOperand);
+      chai.expect(result).to.be.undefined;
+    });
+
+    it('Operand error 6: Adding null to null should return null', function() {
+      const firstOperand = null;
+      const secondOperand = null;
+
+      const result = add(firstOperand, secondOperand);
+      chai.expect(result).to.be.null;
+    });
+
+    it('Operand error 7: Adding String to String should return NaN', function() {
+      const firstOperand = "10";
+      const secondOperand = "-1";
+
+      const result = add(firstOperand, secondOperand);
+      chai.expect(result).to.be.NaN;
+    });
+
+    it('Operand error 8: Adding true to true should return NaN', function() {
+      const firstOperand = true;
+      const secondOperand = true;
+
+      const result = add(firstOperand, secondOperand);
+      chai.expect(result).to.be.NaN;
+    });
+
+    it('Operand error 9: Adding Object to Object should return NaN', function() {
+      const firstOperand = {"val": 1};
+      const secondOperand = {"val": -15};
+      const thirdOperand = {"val": 3};
+
+      const result = add(firstOperand, secondOperand, thirdOperand);
+      chai.expect(result).to.be.NaN;
+    });
+
+    it('Operand error 10: Adding NaN to NaN should return NaN', function() {
+      const firstOperand = NaN;
+      const secondOperand = NaN;
+
+      const result = add(firstOperand, secondOperand);
+      chai.expect(result).to.be.NaN;
     });
   });
 });
