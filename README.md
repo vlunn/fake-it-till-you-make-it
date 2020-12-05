@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/vlunnikivi/fake-it-till-you-make-it/badge.svg)](https://coveralls.io/github/vlunnikivi/fake-it-till-you-make-it)
+
 # Student template
 
 ## Purpose of this repository
